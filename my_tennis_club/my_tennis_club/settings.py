@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from pickle import FALSE, TRUE
 from re import T
+import mimetypes
 
+mimetypes.add_type("text/css", ".css", True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +29,7 @@ SECRET_KEY = 'django-insecure-r)ncd_$xx7w!*-e2^yoqbdra_&8bj%74zdi(7y6b7h&4nh^g=n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['127.0.0.1']
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,19 +41,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'members'
+    'members',
+    'bootstrap5',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
+   
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+      # CSRF Middleware
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
+
+    
+
 
 ROOT_URLCONF = 'my_tennis_club.urls'
 
@@ -133,3 +142,14 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'mystaticfiles']
+
+# Set the CSRF_COOKIE_DOMAIN to None for development
+CSRF_COOKIE_DOMAIN = None
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'members.backends.MemberBackend',
+    # Füge hier benutzerdefinierte Authentifizierungs-Backends hinzu, wenn du sie verwendet.
+]
+
+

@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>login and signup page</title>
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form method="post" action="{% url 'signup' %}">
+
+        {% csrf_token %} 
+        <h1>Create Account</h1>
+        <input type="text" name="firstname" placeholder="Vorname" />
+        <input type="text" name="lastname" placeholder="Nachname" />
+        <input type="email" name="email" placeholder="email" />
+        <input type="number" name="age" placeholder="Alter" />
+        <input type="password" name="password" placeholder="Passwort" />
+        <input type="password" placeholder="Passwort bestätigen" name="pswd2" />
+        <button type="submit" >Regestrieren</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form method="post" action="{% url 'einloggen' %}">
+        {% csrf_token %} 
+        <h1>Sign in</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your account</span>
+        <input type="email" name="email" placeholder="email" />
+        <input type="password" name="password1" placeholder="Passwort" />
+        <a href="#">Passwort vergessen?</a>
+        <button type="submit" >Einloggen</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>Um mit uns in Verbindung zu bleiben, melden Sie sich bitte mit Ihren persönlichen Informationen an</p>
+          <button class="ghost" id="signIn">Einloggen</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p>Tragen Sie Ihre persönlichen Daten ein und starten Sie Ihre Trip mit uns</p>
+          <button class="ghost" id="signUp">Regestrieren</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static 'app.js' %}"></script>
+</body>
+
+</html>

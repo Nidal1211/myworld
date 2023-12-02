@@ -6,6 +6,6 @@ from .models import Member
 # Refrom .models import Member
 
 class MemberAdmin(admin.ModelAdmin):
-  list_display = ("firstname", "lastname", "joined_date",)
+  list_display = ("firstname", "lastname","phone", "joined_date","email","passwort",)
   
 admin.site.register(Member, MemberAdmin)

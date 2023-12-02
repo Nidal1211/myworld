@@ -4,12 +4,19 @@
 <head>
   <link rel="stylesheet" href="{% static 'myglobal.css' %}">
   <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+  
 </head>
 <body>
 
 <div class="topnav">
   <a href="/">HOME</a> |
-  <a href="/members">MEMBERS</a>
+  <a href="/members">MEMBERS</a> |
+  <a href="login/">Logout</a>
+
 </div>
 
 {% block content %}
